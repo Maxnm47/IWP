@@ -1,20 +1,33 @@
-let count = 20;
+var count = 20;
+
+var input_interval = 5;
+
 let called = false;
-let myInterval = setInterval(function() {
-    console.log(count + " seconds remaining");
+function start(){
+    countdown = setInterval(function() {
+    console.log(count);
     count--;
 
-    if (!called) {
-        setTimeout(function() {
-            console.log("X");
-            called = false;
-        }, 5000);
-        called = true;
-    }
+        if (!called) {
+            interval = setTimeout(function() {
+                console.log("X");
+                called = false;
+            }, 5000);
+            called = true;
+        }
+        
+        if (count === 0) {
+            called = true;
+            clearInterval(countdown);
+            console.log("Time's up!");
+        }
+    }, 1000);
+}
 
-    if (count === 0) {
-        called = true;
-        clearInterval(myInterval);
-        console.log("Time's up!");
-    }
-}, 1000);
+
+function stop(){
+    clearInterval(countdown)
+    clearTimeout(interval)
+}
+
+start();
