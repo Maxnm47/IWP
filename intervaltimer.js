@@ -2,12 +2,12 @@ var time = 0;
 
 var interval = 0;
 
-
 var input_interval_from;
 var interval_from;
 var input_interval_to;
 var interval_to;
 
+var label = document.getElementById("colorbox");
 
 var called = false; 
 
@@ -15,21 +15,16 @@ var started = false;
 var the_start = document.getElementById("start");
 
 function start() {
-  
+    //interval gathering
     input_interval_from = document.getElementById("interval_from").value;
     interval_from = parseInt(input_interval_from);
     input_interval_to = document.getElementById("interval_to").value;
     interval_to = parseInt(input_interval_to);
+
     if (!started) {
         the_start.innerHTML = "stop";
         started = true;
-
         time = set_time();
-
-        //interval creation:
-        interval = set_interval();
-
-
       main_cd();
     } else {
       the_start.innerHTML = "start";
@@ -58,16 +53,14 @@ function main_cd() {
             interval = set_interval();
             
             cd_interval = setTimeout(function() {
-
-                //her skal intervalet codes ind så den ændre farve.
-                console.log("The interval:", interval);
-                called = false;
-            }, interval*1000);
-            called = true;
+                color_changer();
+                  called = false;
+                }, interval*1000);
+                called = true;
         }
         
         if (time === 0) {
-            called = true;
+            called = false; //måske skal den være true
             clearTimeout(cd_interval)
             clearInterval(countdown);
         }
@@ -79,12 +72,16 @@ function stop(){
     clearInterval(countdown);
     clearTimeout(cd_interval);
     console.log("stop")
+    label.style.backgroundColor = "black"
 }
 
 function reset(){
     clearInterval(countdown);
     clearTimeout(cd_interval);
     document.getElementById("timer").innerHTML = "00:00"
+    started = false;
+    called = false;
+    label.style.backgroundColor = "black"
 }
 var reseter = document.getElementById("reset");
 reseter.addEventListener("click", reset)
@@ -102,16 +99,23 @@ function set_time() {
   
 function set_interval(){
     interval = Math.floor(Math.random() * (interval_to - interval_from + 1)) + interval_from;
-
     return interval;
 }
 
 function color_changer(){
-  
+  var colors = ["red", "blue", "green", "yellow"];
+  const random = Math.floor(Math.random() * colors.length);
+  label.style.backgroundColor = colors[random];
+  console.log(colors[random]);
+
+  setTimeout(function()  {
+    label.style.backgroundColor = "black";
+  },1000)
+
 }
 /////////////////////////////////////// test functions
 function tester(){
-    console.log(interval, interval_from +"to"+ interval_to)
+  
 }
 
 var teste = document.getElementById("test");
