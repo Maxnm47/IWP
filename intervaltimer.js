@@ -12,6 +12,12 @@ var started = false;
 var the_start = document.getElementById("start");
 
 function start() {
+  
+    interval_from = parseInt(input_interval_from);
+    input_interval_from = document.getElementById("interval_from").value;
+    input_interval_to = document.getElementById("interval_to").value;
+    interval_to = parseInt(input_interval_to);
+
     if (!started) {
         the_start.innerHTML = "stop";
         started = true;
@@ -47,8 +53,7 @@ function main_cd() {
 
         time--;
         if (!called) {
-            //interval = Math.floor(Math.random() * (interval_to - interval_from + 1)) + interval_from; //recalls interval, so it will be random
-            interval = set_interval();//måske er det her langsomere? fordi der er getelementid
+            interval = set_interval();
             
             cd_interval = setTimeout(function() {
 
@@ -95,11 +100,6 @@ function set_time() {
   
 
 function set_interval(){
-    input_interval_from = document.getElementById("interval_from").value;
-    interval_from = parseInt(input_interval_from);
-
-    input_interval_to = document.getElementById("interval_to").value;
-    interval_to = parseInt(input_interval_to);
     interval = Math.floor(Math.random() * (interval_to - interval_from + 1)) + interval_from;
 
     return interval;
