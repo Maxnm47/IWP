@@ -1,47 +1,68 @@
-var count = 20;
+var time = 0;
 
-var input_interval = 5;
+var interval = 0;
+var interval_from = 0;
+var interval_to = 0;
 
-var called = false; //ændret fra let
+var input_interval_from = 0;
+var input_interval_to = 0;
+var called = false; 
 
 var started = false;
 var the_start = document.getElementById("start");
 
-function the_starter() {
-  if (!started) {
-    console.log(1);
-    the_start.innerHTML = "stop";
-    started = true;
-    //start();
-  } else {
-    console.log(2);
-    the_start.innerHTML = "start";
-    started = false;
-    //stop();
+function start() {
+    if (!started) {
+        the_start.innerHTML = "stop";
+        started = true;
+
+        time = set_time();
+
+        //interval creation:
+        interval = set_interval();
+
+
+      main_cd();
+    } else {
+      the_start.innerHTML = "start";
+      started = false;
+      stop();
+    }
   }
-}
+  
+the_start.addEventListener("click", start);
 
-the_start.addEventListener("click", the_starter);
-
-
-function start(){
+var display;
+var min = 0;
+var sec = 0;
+function main_cd() {
     countdown = setInterval(function() {
-    console.log(count);
-    count--;
+        
+        min = Math.floor(time / 60);
+        min = min < 10 ? "0" + min : min;
+        sec = time % 60;
+        sec = sec < 10 ? "0" + sec : sec;
+        display = min + ":" + sec;
+        document.getElementById("timer").innerHTML = display;
 
+        time--;
         if (!called) {
-            interval = setTimeout(function() {
-                console.log("X");
+            //interval = Math.floor(Math.random() * (interval_to - interval_from + 1)) + interval_from; //recalls interval, so it will be random
+            interval = set_interval();//måske er det her langsomere? fordi der er getelementid
+            
+            cd_interval = setTimeout(function() {
+
+                //her skal intervalet codes ind så den ændre farve.
+                console.log("The interval:", interval);
                 called = false;
-            }, 5000);
+            }, interval*1000);
             called = true;
         }
         
-        if (count === 0) {
+        if (time === 0) {
             called = true;
-            clearTimeout(interval)
+            clearTimeout(cd_interval)
             clearInterval(countdown);
-            console.log("Time's up!");
         }
     }, 1000);
 }
@@ -49,25 +70,45 @@ function start(){
 
 function stop(){
     clearInterval(countdown);
-    clearTimeout(interval);
+    clearTimeout(cd_interval);
     console.log("stop")
 }
 
 function reset(){
     clearInterval(countdown);
-    clearTimeout(interval);
-    console.log("reset")
+    clearTimeout(cd_interval);
+    document.getElementById("timer").innerHTML = "00:00"
 }
-
-
-
-let starter = document.getElementById("start");
-starter.addEventListener("click", the_starter)
-
-
-let reseter = document.getElementById("reset");
+var reseter = document.getElementById("reset");
 reseter.addEventListener("click", reset)
 
 
+function set_time() {
+    input_time = document.getElementById("time").value;
+    if (input_time.includes(":")) {
+      var [mins, secs] = input_time.split(":").map(val => parseInt(val));
+      return time = (mins * 60) + secs;
+    } else {
+      return time = parseInt(input_time);
+    }
+  }
+  
 
+function set_interval(){
+    input_interval_from = document.getElementById("interval_from").value;
+    interval_from = parseInt(input_interval_from);
+
+    input_interval_to = document.getElementById("interval_to").value;
+    interval_to = parseInt(input_interval_to);
+    interval = Math.floor(Math.random() * (interval_to - interval_from + 1)) + interval_from;
+
+    return interval;
+}
+/////////////////////////////////////// test functions
+function tester(){
+    
+}
+
+var teste = document.getElementById("test");
+teste.addEventListener("click", tester)
 
