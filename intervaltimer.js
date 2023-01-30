@@ -1,11 +1,14 @@
 var time = 0;
 
 var interval = 0;
-var interval_from = 0;
-var interval_to = 0;
 
-var input_interval_from = 0;
-var input_interval_to = 0;
+
+var input_interval_from;
+var interval_from;
+var input_interval_to;
+var interval_to;
+
+
 var called = false; 
 
 var started = false;
@@ -13,11 +16,10 @@ var the_start = document.getElementById("start");
 
 function start() {
   
-    interval_from = parseInt(input_interval_from);
     input_interval_from = document.getElementById("interval_from").value;
+    interval_from = parseInt(input_interval_from);
     input_interval_to = document.getElementById("interval_to").value;
     interval_to = parseInt(input_interval_to);
-
     if (!started) {
         the_start.innerHTML = "stop";
         started = true;
@@ -98,15 +100,18 @@ function set_time() {
     }
   }
   
-
 function set_interval(){
     interval = Math.floor(Math.random() * (interval_to - interval_from + 1)) + interval_from;
 
     return interval;
 }
+
+function color_changer(){
+  
+}
 /////////////////////////////////////// test functions
 function tester(){
-    
+    console.log(interval, interval_from +"to"+ interval_to)
 }
 
 var teste = document.getElementById("test");
