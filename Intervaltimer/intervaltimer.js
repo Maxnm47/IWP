@@ -41,14 +41,7 @@ var sec = 0;
 function main_cd() {
     countdown = setInterval(function() {
         
-        min = Math.floor(time / 60);
-        min = min < 10 ? "0" + min : min;
-        sec = time % 60;
-        sec = sec < 10 ? "0" + sec : sec;
-        display = min + ":" + sec;
-        document.getElementById("timer").innerHTML = display;
-
-        time--;
+        timekeeper(min,sec);
         if (!called) {
             interval = set_interval();
             
@@ -102,16 +95,28 @@ function set_interval(){
     return interval;
 }
 
-function color_changer(){
+function color_changer() {
   var colors = ["red", "blue", "green", "yellow"];
   const random = Math.floor(Math.random() * colors.length);
   label.style.backgroundColor = colors[random];
   console.log(colors[random]);
 
-  setTimeout(function()  {
+  setTimeout(() => {
     label.style.backgroundColor = "black";
-  },1000)
+  }, 1000);
+}
 
+
+function timekeeper(){
+  min = Math.floor(time / 60);
+  min = min < 10 ? "0" + min : min;
+  sec = time % 60;
+  sec = sec < 10 ? "0" + sec : sec;
+  
+  display = min + ":" + sec;
+  document.getElementById("timer").innerHTML = display;
+  time--;
+  
 }
 /////////////////////////////////////// test functions
 function tester(){
