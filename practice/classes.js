@@ -18,6 +18,6 @@ class rectangle {
       }
 }
 
-var rectone = new rectangle(100, 100);
+let rectone = new rectangle(100, 100);
 
-console.log(rectone, "area: \s" + rectone.calcArea(rectone.height, rectone.width))
+console.log(rectone, "area: " + rectone.calcArea(rectone.height, rectone.width))
