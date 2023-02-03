@@ -118,11 +118,22 @@ function timekeeper(){
   time--;
   
 }
-/////////////////////////////////////// test functions
-function tester(){
-  
+//modal shit
+var modal = document.getElementById("settingsmodal");
+var settingsbtn = document.getElementById("settings");
+
+var span = document.getElementsByClassName("close")[0];
+
+settingsbtn.onclick = function() {
+  modal.style.display = "block";
 }
 
-var teste = document.getElementById("test");
-teste.addEventListener("click", tester)
+span.onclick = function() {
+  modal.style.display = "none";
+}
 
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+} 

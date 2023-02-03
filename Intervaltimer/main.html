@@ -17,21 +17,53 @@
     <label>Time:</label>
     <input id = "time">
     <br>
-</div>
+    </div>
     
     <div id = "intervals">
-    <label>Interval:</label>
-    <input id = "interval_from">
-    <label>To</label>
-    <input id = "interval_to">
-    </div>
-    <br>
+        <label>Interval:</label>
+        <input id = "interval_from">
+        <label>To</label>
+        <input id = "interval_to">
+        </div>
+        <br>
+        
 
     <div class="button-container">
         <button id="start">Start</button>
         <button id="reset">reset</button>
-        <button id="test">test</button>
+        <button id="settings">settings</button>
     </div>
+
+    <div id="settingsmodal" class="modal">
+
+        <div class="modal-content">
+          <span class="close">&times;</span>
+<!--  
+          <div id = "intervals">
+            <label>Interval:</label>
+            <input id = "interval_from">
+            <label>To</label>
+            <input id = "interval_to">
+            </div>
+            <br>
+-->
+
+          <input type="checkbox" id = "check_color">
+          <label for="check_color">BALLZ </label> 
+          <br>
+          <input type="checkbox" id = "check_number">
+          <label for="check_color">BALLZ </label> 
+          
+          
+        </div>
+      
+      </div>
+
+
+
+
+
+
     <script src = "intervaltimer.js"></script>
    
 </body>
