@@ -132,8 +132,41 @@ span.onclick = function() {
   modal.style.display = "none";
 }
 
+
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 } 
+
+var colors = true;
+const colorInputs = document.querySelectorAll('input[name="numcol"]');
+
+colorInputs.forEach(input => {
+  input.addEventListener("click", function() {
+    if(this.value === "colors"){
+      console.log("color: ", this.value);
+      label.style.backgroundColor = "black" //goes back to the 
+      label.innerHTML = " "
+    }
+    else{
+      console.log("color: ", this.value);
+      label.style.backgroundColor = "white"
+      label.innerHTML = "yeet"
+    }
+});
+});
+
+
+
+
+//function tester() {
+//  if(colors){
+//    console.log("test");
+//  }
+//  else if(!colors){
+//    console.log("not colors")
+//  }
+//}
+//var test = document.getElementById("tester");
+//test.addEventListener("click", tester);
