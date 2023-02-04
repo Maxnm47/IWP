@@ -14,6 +14,28 @@ var called = false;
 var started = false;
 var the_start = document.getElementById("start");
 
+
+var colors = true;
+const colorInputs = document.querySelectorAll('input[name="numcol"]');
+
+colorInputs.forEach(input => {
+  input.addEventListener("click", function() {
+    if(this.value === "colors"){
+      label.style.backgroundColor = "black" //goes back to the 
+      label.innerHTML = " "
+    }
+
+    else{
+      colors = false;
+      label.style.backgroundColor = "white"
+      label.innerHTML = "0"
+
+    }
+});
+});
+
+
+
 function start() {
     //interval gathering
     input_interval_from = document.getElementById("interval_from").value;
@@ -46,7 +68,14 @@ function main_cd() {
             interval = set_interval();
             
             cd_interval = setTimeout(function() {
+              if(colors){
+                console.log(colors + "colors is true")
                 color_changer();
+
+            }
+            else{
+                numberchanger();
+            }
                   called = false;
                 }, interval*1000);
                 called = true;
@@ -106,6 +135,17 @@ function color_changer() {
   }, 1000);
 }
 
+function numberchanger() {
+  var numbers = [1,2,3,4];
+  const random = Math.floor(Math.random() * numbers.length);
+  
+  label.innerHTML = numbers[random];
+
+  setTimeout(() => {
+    label.innerHTML= 0;
+  }, 1000);
+}
+
 
 function timekeeper(){
   min = Math.floor(time / 60);
@@ -138,25 +178,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
-
-var colors = true;
-const colorInputs = document.querySelectorAll('input[name="numcol"]');
-
-colorInputs.forEach(input => {
-  input.addEventListener("click", function() {
-    if(this.value === "colors"){
-      console.log("color: ", this.value);
-      label.style.backgroundColor = "black" //goes back to the 
-      label.innerHTML = " "
-    }
-    else{
-      console.log("color: ", this.value);
-      label.style.backgroundColor = "white"
-      label.innerHTML = "yeet"
-    }
-});
-});
-
 
 
 
