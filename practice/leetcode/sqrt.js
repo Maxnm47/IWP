@@ -2,14 +2,14 @@
  * @param {number} x
  * @return {number}
 */
-let INFINITY_ =9999999;
+let INFINITY =9999999;
 var mySqrt = function(x) {
   
     let i = 0, udigit, j; // Loop counters
-    let cur_divisor = 0;
+    let divi = 0;
     let quotient_units_digit = 0;
-    let cur_quotient = 0;
-    let cur_dividend = 0;
+    let quit = 0;
+    let dividend = 0;
     let cur_remainder = 0;
     let a = new Array(10);
     
@@ -23,19 +23,19 @@ var mySqrt = function(x) {
     
     for (j = i; j >= 0; j--) {
     
-        cur_remainder = INFINITY_;
-        cur_dividend = cur_dividend * 100 + a[j];
+        cur_remainder = INFINITY;
+        dividend = dividend * 100 + a[j];
     
         for (udigit = 0; udigit <= 9; udigit++) {
 
-            if (cur_remainder >= cur_dividend
-                                     - ((cur_divisor * 10 + udigit)
+            if (cur_remainder >= dividend
+                                     - ((divi * 10 + udigit)
                                         * udigit)
-                && cur_dividend
-                           - ((cur_divisor * 10 + udigit) * udigit)
+                && dividend
+                           - ((divi * 10 + udigit) * udigit)
                        >= 0) {
     
-                cur_remainder = cur_dividend - ((cur_divisor * 10
+                cur_remainder = dividend - ((divi * 10
                                                  + udigit)
                                                 * udigit);
     
@@ -43,14 +43,14 @@ var mySqrt = function(x) {
             }
         }
     
-        cur_quotient = cur_quotient * 10
+        quit = quit * 10
                        + quotient_units_digit;
     
-        cur_divisor = cur_quotient * 2;
+        divi = quit * 2;
     
-        cur_dividend = cur_remainder;
+        dividend = cur_remainder;
     }
     
-    return cur_quotient;
+    return quit;
 }
- 
+

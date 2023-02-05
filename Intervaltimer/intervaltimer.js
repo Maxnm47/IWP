@@ -7,6 +7,9 @@ var interval_from;
 var input_interval_to;
 var interval_to;
 
+var countdown;
+var cd_interval;
+
 var label = document.getElementById("colorbox");
 
 var called = false; 
@@ -43,6 +46,8 @@ function start() {
     input_interval_to = document.getElementById("interval_to").value;
     interval_to = parseInt(input_interval_to);
 
+
+    colorgetter();//get the colors
     if (!started) {
         the_start.innerHTML = "stop";
         started = true;
@@ -98,12 +103,12 @@ function stop(){
 }
 
 function reset(){
-    clearInterval(countdown);
-    clearTimeout(cd_interval);
-    document.getElementById("timer").innerHTML = "00:00"
-    started = false;
-    called = false;
-    label.style.backgroundColor = "black"
+  clearInterval(countdown);
+  clearTimeout(cd_interval);
+  document.getElementById("timer").innerHTML = "00:00"
+  started = false;
+  called = false;
+  label.style.backgroundColor = "black";
 }
 var reseter = document.getElementById("reset");
 reseter.addEventListener("click", reset)
@@ -124,16 +129,23 @@ function set_interval(){
     return interval;
 }
 
+
+
+let color1 = "red", color2 ="blue", color3 ="yellow", color4 = "green";
+
+var colorlist = [color1, color2, color3, color4];
+
 function color_changer() {
-  var colors = ["red", "blue", "green", "yellow"];
-  const random = Math.floor(Math.random() * colors.length);
-  label.style.backgroundColor = colors[random];
-  console.log(colors[random]);
+  const random = Math.floor(Math.random() * colorlist.length);
+  label.style.backgroundColor = colorlist[random];
+  console.log(colorlist[random]);
 
   setTimeout(() => {
     label.style.backgroundColor = "black";
   }, 1000);
 }
+
+
 
 function numberchanger() {
   var numbers = [1,2,3,4];
@@ -180,6 +192,20 @@ window.onclick = function(event) {
 } 
 
 
+
+function colorgetter() {
+    color1 = document.getElementById('color_one').value
+    color2= document.getElementById('color_two').value
+    color3 = document.getElementById('color_three').value
+    color4 = document.getElementById('color_four').value
+    if(color1 !== "" && color2 !== "" && color3 !== "" && color4 !== ""){
+        colorlist[0] = color1
+        colorlist[1] = color2
+        colorlist[2] = color3
+        colorlist[3] = color4  
+    }
+
+}
 
 //function tester() {
 //  if(colors){

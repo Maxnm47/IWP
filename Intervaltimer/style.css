@@ -64,7 +64,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, button {
   }
   
   input {
-    width: 3em;
+    width: 5em;
   }
   
   #timer {
@@ -114,9 +114,8 @@ html {
   margin: 15% auto; 
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 90%;
 }
-
 
 .close {
   color: #aaa;
@@ -130,4 +129,9 @@ html {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.modal-content .pickers {
+  width: 4em;
+  height: 1em;
 }
