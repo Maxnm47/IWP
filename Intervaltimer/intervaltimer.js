@@ -211,6 +211,10 @@ function colorgetter() {
 
 }
 
+function numbergetter(){
+  
+}
+
 //function tester() {
 //  if(colors){
 //    console.log("test");
