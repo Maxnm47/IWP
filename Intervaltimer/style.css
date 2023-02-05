@@ -135,3 +135,9 @@ html {
   width: 4em;
   height: 1em;
 }
+
+#numberlabels {
+  display: none;
+}
+
+

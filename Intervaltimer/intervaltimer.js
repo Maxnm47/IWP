@@ -20,23 +20,27 @@ var the_start = document.getElementById("start");
 
 var colors = true;
 const colorInputs = document.querySelectorAll('input[name="numcol"]');
+const displaycolors = document.getElementById("colorlabels");
+const displaynumbers = document.getElementById("numberlabels");
+
 
 colorInputs.forEach(input => {
   input.addEventListener("click", function() {
-    if(this.value === "colors"){
-      label.style.backgroundColor = "black" //goes back to the 
-      label.innerHTML = " "
+    //let label = document.getElementById("label");
+    
+    if(this.value === "colors") {
+      label.style.backgroundColor = "black";
+      label.innerHTML = "";
+      displaycolors.style.display = "block";
+      displaynumbers.style.display = "none";
+    } else {
+      label.style.backgroundColor = "white";
+      label.innerHTML = "0";
+      displaycolors.style.display = "none";
+      displaynumbers.style.display = "block";
     }
-
-    else{
-      colors = false;
-      label.style.backgroundColor = "white"
-      label.innerHTML = "0"
-
-    }
+  });
 });
-});
-
 
 
 function start() {
