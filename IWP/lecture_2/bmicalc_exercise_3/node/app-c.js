@@ -60,8 +60,7 @@ function round2Decimals(floatNumber){
 }
 
 function calcBMI(height,weight){
-  //IMPLEMENT ME
-  return 0;
+  return weight/Math.pow(height, 2);
 }
 
 /* "Database" emulated by maintained an in-memory array of BMI Entry objects 
@@ -106,7 +105,7 @@ function calcDelta(name){
 
 //looks up name in bmiDB and returns any found bmiEntry (undefined otherwise)
 function bmiLookup(name){
- //IMPLEMENT ME
+  return name.bmi;
 }
 
 //Process the request that adds a new BMI reading to the DB
