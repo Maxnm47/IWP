@@ -60,7 +60,7 @@ function round2Decimals(floatNumber){
 }
 
 function calcBMI(height,weight){
-  return weight/Math.pow(height, 2);
+  return weight/(height*height);
 }
 
 /* "Database" emulated by maintained an in-memory array of BMI Entry objects 
