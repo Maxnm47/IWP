@@ -29,15 +29,21 @@ colorInputs.forEach(input => {
     //let label = document.getElementById("label");
     
     if(this.value === "colors") {
-      label.style.backgroundColor = "black";
+
+      label.style.backgroundColor = "transparent";
+
       label.innerHTML = "";
       displaycolors.style.display = "block";
       displaynumbers.style.display = "none";
+      colors = true
     } else {
-      label.style.backgroundColor = "white";
+
+      label.style.backgroundColor = "transparent";
+
       label.innerHTML = "0";
       displaycolors.style.display = "none";
       displaynumbers.style.display = "block";
+      colors = false
     }
   });
 });
@@ -49,8 +55,7 @@ function start() {
     interval_from = parseInt(input_interval_from);
     input_interval_to = document.getElementById("interval_to").value;
     interval_to = parseInt(input_interval_to);
-
-
+    numbergetter();//get numbers
     colorgetter();//get the colors
     if (!started) {
         the_start.innerHTML = "stop";
@@ -80,8 +85,8 @@ function main_cd() {
               if(colors){
                 console.log(colors + "colors is true")
                 color_changer();
-
             }
+
             else{
                 numberchanger();
             }
@@ -103,7 +108,7 @@ function stop(){
     clearInterval(countdown);
     clearTimeout(cd_interval);
     console.log("stop")
-    label.style.backgroundColor = "black"
+    label.style.backgroundColor = "transparent"
 }
 
 function reset(){
@@ -112,7 +117,7 @@ function reset(){
   document.getElementById("timer").innerHTML = "00:00"
   started = false;
   called = false;
-  label.style.backgroundColor = "black";
+  label.style.backgroundColor = "transparent";
 }
 var reseter = document.getElementById("reset");
 reseter.addEventListener("click", reset)
@@ -133,8 +138,6 @@ function set_interval(){
     return interval;
 }
 
-
-
 let color1 = "red", color2 ="blue", color3 ="yellow", color4 = "green";
 
 var colorlist = [color1, color2, color3, color4];
@@ -145,20 +148,20 @@ function color_changer() {
   console.log(colorlist[random]);
 
   setTimeout(() => {
-    label.style.backgroundColor = "black";
+    label.style.backgroundColor = "transparent";
   }, 1000);
 }
 
-
+let number1 = 1, number2 = 2, number3 = 3, number4 = 4;
+let numberlist = [number1, number2, number3, number4];
 
 function numberchanger() {
-  var numbers = [1,2,3,4];
-  const random = Math.floor(Math.random() * numbers.length);
+  const the_number = Math.floor(Math.random() * numberlist.length);
+  label.innerHTML = numberlist[the_number];
+  colors = false;
   
-  label.innerHTML = numbers[random];
-
   setTimeout(() => {
-    label.innerHTML= 0;
+    label.innerHTML = "0";
   }, 1000);
 }
 
@@ -194,10 +197,11 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 } 
-
+//end modal shit
 
 
 function colorgetter() {
+    label.style.backgroundColor = "transparent";
     color1 = document.getElementById('color_one').value
     color2= document.getElementById('color_two').value
     color3 = document.getElementById('color_three').value
@@ -212,7 +216,18 @@ function colorgetter() {
 }
 
 function numbergetter(){
-  
+    label.style.backgroundColor = "transparent";
+    number1 = document.getElementById('number_one').value;
+    number2= document.getElementById('number_two').value;
+    number3 = document.getElementById('number_three').value;
+    number4 = document.getElementById('number_four').value;
+    if(number1 !== "" && number2 !== "" && number3 !== "" && number4 !== ""){
+      numberlist[0] = number1;
+      numberlist[1] = number2;
+      numberlist[2] = number3;
+      numberlist[3] = number4;  
+    }
+
 }
 
 //function tester() {
