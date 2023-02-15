@@ -1,7 +1,4 @@
-* @param {string} a
-* @param {string} b
-* @return {string}
-*/
+
 var addBinary = function(a, b) {
    let i = a.length - 1, j = b.length - 1, carry = 0;
    let result = '';
