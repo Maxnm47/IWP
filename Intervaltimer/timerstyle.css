@@ -83,7 +83,9 @@ html, body, h1, h2, h3, h4, h5, h6, p, button {
     font-size: 400px;
   }
   
-  
+#home {
+  color: inherit;
+}
   
 
 html {
@@ -96,8 +98,18 @@ html {
   }
 }
 
+
+.modal-content label {
+  display: inline-block;
+  background-color: #ffffff;
+  font-family: sans-serif, Arial;
+  font-size: 16px;
+
+}
+
+
 .modal {
-  display: none;
+  /*display: none;*/
   position: fixed;
   z-index: 1; 
   left: 0;
@@ -115,6 +127,18 @@ html {
   padding: 20px;
   border: 1px solid #888;
   width: 90%;
+}
+.modal-content input[type="radio"].button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid #333;
+  border-radius: 4px;
+  background-color: #ffffff;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .close {
@@ -141,3 +165,28 @@ html {
 }
 
 
+/* Style the radio buttons */
+input[type="radio"].button {
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid #333;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000000;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Style the radio buttons when checked */
+input[type="radio"].button:checked {
+  background-color: lightblue;
+  color: #fff;
+}
+
+/* Hide the default radio button */
+input[type="radio"].button::-ms-check,
+input[type="radio"].button::-webkit-check {
+  display: none;
+}

@@ -23,7 +23,6 @@ const colorInputs = document.querySelectorAll('input[name="numcol"]');
 const displaycolors = document.getElementById("colorlabels");
 const displaynumbers = document.getElementById("numberlabels");
 
-
 colorInputs.forEach(input => {
   input.addEventListener("click", function() {
     //let label = document.getElementById("label");
@@ -76,30 +75,32 @@ var min = 0;
 var sec = 0;
 function main_cd() {
     countdown = setInterval(function() {
+      timekeeper(min,sec);
+      if (!called) {
+        interval = set_interval();
         
+        cd_interval = setTimeout(function() {
+          if(colors){
+            color_changer();
+          }
+          
+          else{
+            numberchanger();
+          }
+          called = false;
+        }, interval*1000);
+        called = true;
+      }
+      
+      if (time === 0) {
+        called = false; //måske skal den være true
+        
+        clearTimeout(cd_interval);
+        clearInterval(countdown);
         timekeeper(min,sec);
-        if (!called) {
-            interval = set_interval();
-            
-            cd_interval = setTimeout(function() {
-              if(colors){
-                console.log(colors + "colors is true")
-                color_changer();
-            }
-
-            else{
-                numberchanger();
-            }
-                  called = false;
-                }, interval*1000);
-                called = true;
-        }
-        
-        if (time === 0) {
-            called = false; //måske skal den være true
-            clearTimeout(cd_interval)
-            clearInterval(countdown);
-        }
+        reset();
+      }
+      time--;
     }, 1000);
 }
 
@@ -111,16 +112,23 @@ function stop(){
     label.style.backgroundColor = "transparent"
 }
 
+
+var reseter = document.getElementById("reset");
+reseter.addEventListener("click", reset)
 function reset(){
   clearInterval(countdown);
   clearTimeout(cd_interval);
   document.getElementById("timer").innerHTML = "00:00"
+  
   started = false;
   called = false;
   label.style.backgroundColor = "transparent";
+  the_start.innerHTML = "start";
 }
-var reseter = document.getElementById("reset");
-reseter.addEventListener("click", reset)
+//home reset button, so the timer doesnt keep running
+var t_home = document.getElementById("t_home");
+t_home.addEventListener("click", reset)
+
 
 
 function set_time() {
@@ -174,7 +182,7 @@ function timekeeper(){
   
   display = min + ":" + sec;
   document.getElementById("timer").innerHTML = display;
-  time--;
+  
   
 }
 //modal shit

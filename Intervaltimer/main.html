@@ -1,101 +1,19 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="mainstyle.css">
     <title>Overtimers</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-    <div id="colorbox"></div>
-    <br>
-
-    <div id="timer">00:00</div>
-   <br>
-
-   <div id = "timeinput">
-    <label>Time:</label>
-    <input id = "time">
-    <br>
+    <div class = "nav">
+        <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="timer.html">Timer</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">About</a></li>
+        </ul>     
     </div>
-    
-    <div id = "intervals">
-        <label>Interval:</label>
-        <input id = "interval_from">
-        <label>To</label>
-        <input id = "interval_to">
-        </div>
-        <br>
-        
-
-    <div class="button-container">
-        <button id="start">Start</button>
-        <button id="reset">reset</button>
-        <button id="settings">settings</button>
-    </div>
-
-    <div id="settingsmodal" class="modal">
-
-        <div class="modal-content">
-          <span class="close">&times;</span>
-<!--  
-          <div id = "intervals">
-            <label>Interval:</label>
-            <input id = "interval_from">
-            <label>To</label>
-            <input id = "interval_to">
-            </div>
-            <br>
--->
-
-          <input type="radio" id = "check_color" name = "numcol" value = "colors" checked>
-          <label for="check_color">Colors</label> 
-        
-          <div id = "colorlabels">
-
-          <label for="color_one">color 1:</label>
-          <input type="text" id = color_one class ="pickers">
-          
-          <label for="color_one">color 2:</label>
-          <input type="text" id = color_two class ="pickers">
-          
-          <label for="color_one">color 3:</label>
-          <input type="text" id = color_three class ="pickers">
-          
-          <label for="color_one">color 4:</label>
-          <input type="text" id = color_four class ="pickers">
-        </div>
-
-          <br>
-          <input type="radio" id = "check_number" name = "numcol" value = "numbers">
-          <label for="check_color">Numbers</label> 
-
-          <div id = "numberlabels">
-
-            <label for="number_one">number 1:</label>
-            <input type="text" id = number_one class ="pickers">
-            
-            <label for="number_two">number 2:</label>
-            <input type="text" id = number_two class ="pickers">
-            
-            <label for="number_three">number 3:</label>
-            <input type="text" id = number_three class ="pickers">
-            
-            <label for="number_four">number 4:</label>
-            <input type="text" id = number_four class ="pickers">
-          </div>
-          
-        </div>
-      
-      </div>
-
-      <!-- <button id = "tester">test</button> -->
-
-
-
-
-    <script src = "intervaltimer.js"></script>
-   
 </body>
-
 </html>
