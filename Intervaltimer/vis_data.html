@@ -19,19 +19,26 @@
     <div id="ball_input">
         <label for="array">Enter <select name="structures" id="structure">
             <option value="array">array</option>
-            <option value="yeet">yeet</option>
-            <option value="skeet">skeet</option>
+            <option value="linked" >linked list</option> <!-- selects the default value with selected="selected" -->
+            <option value="binarytree" selected="selected">Binary tree</option>
             <option value="neet">neet</option>
+
+
           </select>:</label>
-        <input id="array">
+        <input id="array" value = "">
+
         <div id="label_container" style="display: inline-block;"></div>
         <button id="starter">start</button>        
         <button id="clear">Clear</button>        
+        <button id="export">Export</button>
     </div>
     
     <ul class="box"></ul>
     
 
     <script src="visual_data.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/pdfmake.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.2/vfs_fonts.js"></script> -->
+
 </body>
 </html>

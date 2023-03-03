@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>IWP Demo</title>
+  <meta charset="UTF-8">
+</head>
+<body>   
+    <form id="beerForm">
+    <fieldset> <legend> Vælg Øl Type: </legend>
+        <input type="radio" name="gæringstype" value="ales" checked> Overgæret (Ale)       
+        <input type="radio" name="gæringstype" value="lagers"> Undergæret (Lager)  
+        <input type="radio" name="gæringstype" value="wilds" > Vildtgæret (Lambic)
+        <br>
+        <input type="button" value="Start" onclick=beerselector()>
+    </fieldset>
+</form>
+<div id ="output"></div>
+
+<script>// define an object that holds different beer types
+  const beerTypes = {
+    ales: ["Bitter", "Pale Ale", "Brown Ale", "Trappist", "Porter", "Weizenbier"],
+    lagers: ["Pilsner", "Münchener", "Wiener", "Bock", "Porter"],
+    wilds: ["Gueuze", "Faro", "Fruit"]
+  };
+  
+  // create a new select element
+  const typeselect = document.createElement("select");
+  
+  // get the form element with the ID "beerForm"
+  const beerForm = document.getElementById("beerForm");
+  
+  // set the name attribute of the select element to "types"
+  typeselect.name = "types";
+  
+  // append the select element to the first fieldset element within the form
+  beerForm.querySelector("fieldset").appendChild(typeselect);
+  
+  // get all input elements with the name "gæringstype"
+  const beerinput = document.querySelectorAll('input[name="gæringstype"]');
+  
+  // add a click event listener to each input element
+  beerinput.forEach(input => {
+    input.addEventListener("click", function() {
+      beerselector();
+    });
+  });
+  
+  // define a function that populates the select element with options based on the selected input value
+  function beerselector() {
+    let checkedValue;
+    let checkedText;
+  
+    // get the selected input value and its corresponding text
+    beerinput.forEach(button => {
+      if (button.checked) {
+        checkedValue = button.value;
+        checkedText = button.nextSibling.textContent.trim();
+      }
+    });
+  
+    // get the output div element and create a new h1 element to display the selected beer type
+    let outputDiv = document.getElementById("output");
+    let header = document.createElement("h1");
+  
+    // if there is already an h1 element in the output div, remove it
+    if (outputDiv.querySelector("h1")) {
+      outputDiv.removeChild(outputDiv.querySelector("h1"));
+    }
+  
+    // set the text content of the new h1 element to the selected beer type text
+    header.textContent = checkedText;
+    outputDiv.appendChild(header);
+  
+    // clear any existing options in the select element
+    typeselect.innerHTML = "";
+  
+    // populate the select element with options based on the selected input value
+    beerTypes[checkedValue].forEach(type => {
+      const option = document.createElement("option");
+      option.value = type.toLowerCase();
+      option.text = type;
+      typeselect.add(option);
+    });
+  }
+  
+
+    </script>    
+</body>    
+</html>    
+

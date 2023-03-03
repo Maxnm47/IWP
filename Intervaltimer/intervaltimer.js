@@ -74,8 +74,10 @@ var display;
 var min = 0;
 var sec = 0;
 function main_cd() {
+  
     countdown = setInterval(function() {
       timekeeper(min,sec);
+      
       if (!called) {
         interval = set_interval();
         

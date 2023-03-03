@@ -34,9 +34,6 @@
   }
   
   
-  
-  
-  
   /* Add CSS reset styles */
   html, body, h1, h2, h3, h4, h5, h6, p, button {
       margin: 0;
@@ -80,18 +77,30 @@
       margin: 10px;
     }
 
+    
 
-
-    .balls {
-      margin: 10px;
+    .array {
       height: 100px;
       width: 100px;
-      background-color: #bbb;
-      border-radius: 50%;
+      background-color: white;
+      border-style: solid;
+      border-color: black;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
       font-weight: bold;
     }
+
+   
     
+    #arrow{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+  
+    }
+
+.binary_Button{
+  background-color: red;
+}
