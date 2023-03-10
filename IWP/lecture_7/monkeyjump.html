@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>IWP Validation Exercise</title>
+  <meta charset="UTF-8">
+
+<script>
+
+function monkeysJump(event) {
+  event.preventDefault()
+  
+}
+</script>
+
+</head>
+<body>
+    <form id="myForm" >
+        How many little monkeys are jumping on the bed? <input type="text" id="monkeys" value="" >
+    </form>
+    <div id="message" style="white-space: pre;"></div>
+
+    
+<script>
+function monkeysJump(event) {
+  event.preventDefault();
+  const input = document.getElementById("monkeys").value;
+  try {
+    const num = parseInt(input);
+    if (isNaN(num)) {
+      throw "not a number";
+    }
+    if(num === 420){
+      throw "the monkies are high af bro"
+    }
+    if(num === 69){
+      throw "the monkies are fucking "
+    }
+    if (num < 1) {
+      throw "at least one monkey please";
+    }
+    if (num > 5 ) {
+      throw "too many monkeys";
+    }
+    const messageDiv = document.getElementById("message");
+    messageDiv.textContent = "";
+    for (let i = 1; i <= num; i++) {
+      messageDiv.textContent += `${i} little monkey${i > 1 ? 's' : ''} jumping on the bed\n`;
+    }
+  } catch (error) {
+    const messageDiv = document.getElementById("message");
+    messageDiv.textContent = error;
+    setTimeout(() => { messageDiv.textContent = ""; }, 2000);
+  }
+}
+
+document.getElementById("myForm").addEventListener("submit", monkeysJump);
+
+
+</script>
+</body>
