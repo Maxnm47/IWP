@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="handleClick()">Click me</button>
+
+    <script>
+        async function handleClick() {
+            try {
+                await promise1();
+                console.log("Hej");
+                await promise2();
+                console.log("IWP");
+                await promise3();
+                console.log("I am done");
+            } catch (error) {
+                console.error(error);
+            }
+        }
+  
+        function promise1() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, 2000);
+            });
+        }
+  
+        function promise2() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, 2000);
+            });
+        }
+  
+        function promise3() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

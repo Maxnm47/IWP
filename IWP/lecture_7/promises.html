@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="handleClick()">Click me</button>
+
+    <script>
+        function handleClick() {
+            sleep(2)
+                .then(() => {
+                    console.log("Hej");
+                    return sleep(2);
+                })
+                .then(() => {
+                    console.log("IWP");
+                    return sleep(2);
+                })
+                .then(() => {
+                    console.log("I am done");
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        }
+  
+    
+  
+        function sleep(sekunder) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve();
+                }, sekunder*1000);
+            });
+        }
+  
+          
+    </script>
+</body>
+</html>

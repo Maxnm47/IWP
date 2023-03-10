@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>IWP Validation Exercise</title>
+        <meta charset="UTF-8" />
+        <script>
+            function monkeysJump(event) {
+                event.preventDefault();
+
+                const get_monkeys = document.getElementById("monkeys");
+                const num_of_monkeys = get_monkeys.value;
+                const answer = document.querySelector("#message");
+                answer.textContent = "";
+                let monkey = 0; 
+                console.log(num_of_monkeys)
+                if (num_of_monkeys <= 5 && num_of_monkeys >= 1) {
+                    let monkeyinterval = setInterval(() => {
+                        monkey++;
+                        answer.textContent += `${monkey} little monkeys are jumping on the bed\n`;
+                        if (num_of_monkeys == monkey) {
+                            clearInterval(monkeyinterval);
+                            console.log("balls");
+                        }
+                    }, 1000);
+                }
+
+
+            }
+        </script>
+    </head>
+    <body>
+        <form id="myForm">
+            How many little monkeys are jumping on the bed?
+            <input type="text" id="monkeys" value="" />
+        </form>
+        <div id="message" style="white-space: pre"></div>
+        <script>
+            document
+                .getElementById("myForm")
+                .addEventListener("submit", monkeysJump);
+        </script>
+    </body>
+</html>
